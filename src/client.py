@@ -8,8 +8,6 @@ redis_connection = Redis('localhost', 6379)
 
 default_queue = Queue(connection=redis_connection)
 
-
-with Connection(redis_connection):
-    default_queue.enqueue(tick, 'task 1')
-    time.sleep(1)
-    default_queue.enqueue(tick, 'task 2')
+default_queue.enqueue(tick, 'task 1')
+time.sleep(1)
+default_queue.enqueue(tick, 'task 2')
